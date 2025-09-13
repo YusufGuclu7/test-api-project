@@ -13,7 +13,7 @@ const prisma = new PrismaClient();
 const app = express();
 
 const corsOptions = {
-    origin: '*', // Tüm kaynaklardan gelen isteklere izin verir (Sadece geliştirme için). Dağıtım öncesi değiştirilmeli.
+    origin: 'https://test-api-project-one.vercel.app', // Vercel domain adresiyle güncellendi
     methods: ['GET', 'POST', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
