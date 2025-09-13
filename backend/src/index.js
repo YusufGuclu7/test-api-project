@@ -14,11 +14,11 @@ const app = express();
 
 const corsOptions = {
     origin: (origin, callback) => {
-        // Vercel'in tüm alt domainlerine ve yerel ortama izin ver
+        // origin değeri tanımsız (undefined) değilse kontrol et
         if (
+            !origin ||
             origin.includes('yusufguclu7s-projects.vercel.app') ||
-            origin.includes('localhost') ||
-            !origin // Mobil uygulamalar gibi originsiz istekler için
+            origin.includes('localhost')
         ) {
             callback(null, true);
         } else {
