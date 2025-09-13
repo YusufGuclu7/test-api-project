@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Table, TableBody, TableCell, TableHead, TableRow, Paper, CircularProgress, Typography } from '@mui/material';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:4000';
+const API_URL = 'https://test-api-project-z1ko.onrender.com';
 
 const DataTable = () => {
   const [records, setRecords] = useState([]);
