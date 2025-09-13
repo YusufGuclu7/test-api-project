@@ -12,6 +12,7 @@ const crypto = require('crypto');
 const prisma = new PrismaClient();
 const app = express();
 
+// CORS ayarı tüm Vercel ve yerel adreslere izin verecek şekilde güncellendi
 const corsOptions = {
     origin: [
         'https://test-api-project-one.vercel.app',
