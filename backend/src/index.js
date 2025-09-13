@@ -12,13 +12,19 @@ const crypto = require('crypto');
 const prisma = new PrismaClient();
 const app = express();
 
-// CORS ayarı tüm Vercel ve yerel adreslere izin verecek şekilde güncellendi
 const corsOptions = {
-    origin: [
-        'https://test-api-project-one.vercel.app',
-        'https://test-api-project-git-main-yusufguclu7s-projects.vercel.app',
-        'http://localhost:3000'
-    ],
+    origin: (origin, callback) => {
+        // Vercel'in tüm alt domainlerine ve yerel ortama izin ver
+        if (
+            origin.includes('yusufguclu7s-projects.vercel.app') ||
+            origin.includes('localhost') ||
+            !origin // Mobil uygulamalar gibi originsiz istekler için
+        ) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PATCH'],
     allowedHeaders: ['Content-Type', 'Authorization']
 };
